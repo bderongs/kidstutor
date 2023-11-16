@@ -17,11 +17,6 @@ recordButton.addEventListener('mouseup', function () {
     stopRecording();
 });
 
-document.addEventListener('mouseup', function () {
-    console.log('mouseup event detected on document, stopping recording.');
-    stopRecording();
-});
-
 // Request microphone permission and get the stream as soon as the page loads
 window.addEventListener('load', () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
