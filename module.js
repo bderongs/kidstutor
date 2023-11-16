@@ -1,23 +1,23 @@
 let stream = null; // Global stream
 let chunks = [];
 let threadId = null;
-let apiKey = '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'; // Replace with your actual OpenAI API key
+let apiKey = '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'; // Replace with your actual OpenAI API key
 let isRecording = false; // To track if we are currently recording
 let isMicPermissionGranted = false; // To track microphone permission status
 
 // Obtain the record button and add event listeners for mouse down and up
 const recordButton = document.getElementById('recordButton');
 
-recordButton.addEventListener('mousedown', function() {
+recordButton.addEventListener('mousedown', function () {
     console.log('mousedown event detected, starting recording.');
     startRecording();
 });
-recordButton.addEventListener('mouseup', function() {
+recordButton.addEventListener('mouseup', function () {
     console.log('mouseup event detected, stopping recording.');
     stopRecording();
 });
 
-document.addEventListener('mouseup', function() {
+document.addEventListener('mouseup', function () {
     console.log('mouseup event detected on document, stopping recording.');
     stopRecording();
 });
@@ -39,7 +39,7 @@ window.addEventListener('load', () => {
 
 function startRecording() {
     console.log("startRecording is called");
-    if (!isRecording && stream && stream.active) {  
+    if (!isRecording && stream && stream.active) {
         // Disable the button to prevent further interaction
         recordButton.textContent = 'Recording...'; // Indicate recording is in progress
 
@@ -63,7 +63,7 @@ function startRecording() {
                 recordButton.disabled = false;
                 recordButton.textContent = 'Hold to Record';
             });
-    }else {
+    } else {
         console.log('Stream not active or already recording.');
     }
 }
@@ -120,7 +120,7 @@ function sendToWhisper(audioBlob) {
             // Then run the thread with the runThread function
         })
         .catch(error => console.error('Error with Whisper:', error));
-  
+
     recordButton.disabled = false;
     recordButton.textContent = 'Hold to Record';
 }
@@ -306,7 +306,7 @@ function useTextToSpeech(text) {
 }
 
 // Ensure the stream gets stopped when the page is unloaded
-window.addEventListener('beforeunload', function() {
+window.addEventListener('beforeunload', function () {
     if (stream) {
         const tracks = stream.getTracks();
         tracks.forEach(track => track.stop());
