@@ -1,12 +1,20 @@
 let stream = null; // Global stream
 let chunks = [];
 let threadId = null;
-let apiKey = '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'; // Replace with your actual OpenAI API key
+let apiKey = ''; // Replace with your actual OpenAI API key
 let isRecording = false; // To track if we are currently recording
 let isMicPermissionGranted = false; // To track microphone permission status
 
 // Obtain the record button and add event listeners for mouse down and up
 const recordButton = document.getElementById('recordButton');
+const saveKeyButton = document.getElementById('saveKeyButton');
+
+// Click on saveKeyButton should store the content of the apiKey field into the variable apiKey
+saveKeyButton.addEventListener('click', function () {
+    apiKey = document.getElementById('apiKey').value;
+    console.log('apiKey is now: ', apiKey);
+});
+
 
 recordButton.addEventListener('mousedown', function () {
     console.log('mousedown event detected, starting recording.');
